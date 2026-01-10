@@ -1,0 +1,6 @@
+@BubbleBudget.API_HostAddress = http://localhost:5018
+
+GET {{BubbleBudget.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

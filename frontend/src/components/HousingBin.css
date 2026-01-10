@@ -1,0 +1,309 @@
+.housing-bin {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 280px;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.housing-bin.drag-over {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.housing-bin.over-budget .house-body {
+  border-color: #ff4444;
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(255, 68, 68, 0.5);
+  }
+}
+
+/* House Roof */
+.house-roof {
+  width: 0;
+  height: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 80px solid;
+  position: relative;
+  margin: 0 auto;
+  filter: drop-shadow(0 -5px 10px rgba(0, 0, 0, 0.2));
+}
+
+.chimney {
+  position: absolute;
+  width: 25px;
+  height: 50px;
+  top: -50px;
+  right: 40px;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* House Body */
+.house-body {
+  background: white;
+  border-radius: 0 0 20px 20px;
+  border: 4px solid;
+  border-top: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+}
+
+.house-body:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.house-header {
+  padding: 15px;
+  color: white;
+  text-align: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.bin-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.bin-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.bin-actions {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  right: 0;
+}
+
+.edit-budget-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.edit-budget-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.over-budget-indicator {
+  color: #ff4444;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.budget-info {
+  margin-bottom: 6px;
+}
+
+.budget-remaining {
+  font-size: 0.8rem;
+  opacity: 0.95;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+}
+
+.bin-total {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.budget-progress-container {
+  padding: 12px 15px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.budget-progress-bar {
+  width: 100%;
+  height: 18px;
+  background: white;
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.budget-progress-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 9px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.budget-overfill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 9px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0.9;
+}
+
+.house-content {
+  flex: 1;
+  padding: 15px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  position: relative;
+}
+
+/* House Door and Windows */
+.house-door {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 60px;
+  border-radius: 8px 8px 0 0;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.house-windows {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 30px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.window {
+  width: 35px;
+  height: 35px;
+  background: rgba(135, 206, 235, 0.3);
+  border: 3px solid;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+.window::before,
+.window::after {
+  content: '';
+  position: absolute;
+  background: rgba(139, 69, 19, 0.3);
+}
+
+.window::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.window::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.marble-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin-top: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.empty-bin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #999;
+  font-style: italic;
+  font-size: 1rem;
+  position: relative;
+  z-index: 2;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .housing-bin {
+    position: static;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto 30px;
+  }
+  
+  .house-roof {
+    border-left-width: 175px;
+    border-right-width: 175px;
+  }
+}
+
+@media (max-width: 480px) {
+  .housing-bin {
+    width: 90%;
+    max-width: 300px;
+  }
+  
+  .house-roof {
+    border-left-width: 150px;
+    border-right-width: 150px;
+    border-bottom-width: 70px;
+  }
+}
+
